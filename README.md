@@ -4,9 +4,8 @@
 
     E - Nota examen (10 pct maxim)
     L - Nota laborator (10 pct maxim)
-    S - Nota seminar (1 pct maxim)
-    S = P*0.1 + R*0.1;
-    N = min(10, E*0.6 + L*0.4 + S);
+    S - Nota seminar (10 pct maxim)
+    N = min(10, E*0.5 + L*0.5 + S*0.1 );
 
 ### Daca aveti intrebari trimiteti-le pe Whatsapp!
 
@@ -51,9 +50,9 @@
 ## Examen
 
 ### Cerinta
- - [**Cerinta Examen 2025**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen2024.pdf)
- - [**Cerinta Examen 2024**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen2024.pdf)
- - [**Cerinta Examen 2023**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen2023.pdf)
+ - [**Cerinta Examen 2025**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen/Examen2024.pdf)
+ - [**Cerinta Examen 2024**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen/Examen2024.pdf)
+ - [**Cerinta Examen 2023**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen/Examen2023.pdf)
 
 ### Rezolvari
  - [] [**Rezolvare Examen 2025 (TO DO)**]()
