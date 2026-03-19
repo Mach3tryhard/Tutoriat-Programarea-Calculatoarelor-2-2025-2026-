@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1744035387 source:/home/tris/Desktop/CeaiAlb/Anul1/Programarea Calculatoarelor II/Sem2PC2 Laborator/Laborator9(Tema)/Project/main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+	<fstream>
+
+1744035851 source:/home/tris/Desktop/CeaiAlb/Anul1/Programarea Calculatoarelor II/Sem2PC2 Laborator/LaboratorA(Tema)/Project/main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+	<fstream>
+

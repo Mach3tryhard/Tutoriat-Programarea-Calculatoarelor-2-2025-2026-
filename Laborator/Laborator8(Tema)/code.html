@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hilbert Curve</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            canvas {
+                display: block;
+                margin: auto;
+                background: #fff;
+            }
+            .my-button {
+                position: absolute;
+                top: 0px;
+                left: 0px; 
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .controls {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: #f0f0f0;
+                padding: 10px;
+                border-radius: 4px;
+            }
+            .controls > * {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="controls">
+            <button id="drawBtn">Draw Hilbert Curve Animated</button>
+            <br>
+            <button id="drawBtn1">Draw Hilbert Curve Instant</button>
+            <br>
+            <label for="orderSlider">Order: </label>
+            <input type="range" id="orderSlider" min="1" max="10" value="3">
+            <span id="orderValue">3</span>
+            <br>
+            <label for="speedSlider">Speed: </label>
+            <input type="range" id="speedSlider" min="1" max="100" value="3">
+            <span id="speedValue">3</span>
+        </div>
+        <canvas id="hilbertCanvas" width="919" height="919"></canvas>
+        <script>
+            color = ["#000000", "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF", "#FFFFFF", "#FFA500", "#800080"];
+
+            function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+            const canvas = document.getElementById("hilbertCanvas");
+            const ctx = canvas.getContext("2d");
+            const drawBtn = document.getElementById("drawBtn");
+            const drawBtn1 = document.getElementById("drawBtn1");
+
+            const orderSlider = document.getElementById("orderSlider");
+            const orderValue = document.getElementById("orderValue");
+            orderSlider.addEventListener("input", function() {
+                orderValue.textContent = orderSlider.value;
+            });
+
+            const speedSlider = document.getElementById("speedSlider");
+            const speedValue = document.getElementById("speedValue");
+            speedSlider.addEventListener("input", function() {
+                speedValue.textContent = speedSlider.value;
+            });
+
+            const step = 919;
+            let stop = 0;
+            async function drawHilbert() {
+                stop=1;
+                await delay(1000);
+                stop=0;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const order = parseInt(orderSlider.value, 10);
+                let currentX = 0;
+                let currentY = 0;
+                ctx.beginPath();
+                ctx.moveTo(currentX, currentY);
+                async function hilbert(iter, s, dir) {
+                    if(stop==1)
+                        return;
+                    for (let i = 0; i < s.length; i++) {
+                        const c = s[i];
+                        if (c === "A" && iter > 0) {
+                            await hilbert(iter - 1, "+BF-AFA-FB+", dir);
+                        } else if (c === "B" && iter > 0) {
+                            await hilbert(iter - 1, "-AF+BFB+FA-", dir);
+                        } else if (c === "F") {
+                            let div = Math.pow(2, order) - 1;
+                            if (dir === 0) {
+                                currentX += step / div;
+                            } else if (dir === 1) {
+                                currentY -= step / div;
+                            } else if (dir === 2) {
+                                currentX -= step / div;
+                            } else if (dir === 3) {
+                                currentY += step / div;
+                            }
+                            ctx.lineTo(currentX, currentY);
+                            ctx.stroke();
+                            await delay(100/speedValue.value);
+                        }
+                        if (c === "-") {
+                            dir++;
+                        } else if (c === "+") {
+                            dir--;
+                        }
+                        if (dir < 0) {
+                            dir = 3;
+                        }
+                        dir = dir % 4;
+                    }
+                }
+                await hilbert(order, "A", 0);
+                ctx.stroke();
+            }
+
+            
+            function drawHilbertInstant() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const order = parseInt(orderSlider.value, 10);
+                let currentX = 0;
+                let currentY = 0;
+                ctx.beginPath();
+                ctx.moveTo(currentX, currentY);
+                let cnt=0;
+                function hilbert(iter, s, dir) {
+                    for (let i = 0; i < s.length; i++) {
+                        const c = s[i];
+                        if (c === "A" && iter > 0) {
+                            hilbert(iter - 1, "+BF-AFA-FB+", dir);
+                        } else if (c === "B" && iter > 0) {
+                            hilbert(iter - 1, "-AF+BFB+FA-", dir);
+                        } else if (c === "F") {
+                            let div = Math.pow(2, order) - 1;
+                            if (dir === 0) {
+                                currentX += step / div;
+                            } else if (dir === 1) {
+                                currentY -= step / div;
+                            } else if (dir === 2) {
+                                currentX -= step / div;
+                            } else if (dir === 3) {
+                                currentY += step / div;
+                            }
+                            ctx.lineTo(currentX, currentY);
+                            ctx.stroke();
+                        }
+                        if (c === "-") {
+                            dir++;
+                        } else if (c === "+") {
+                            dir--;
+                        }
+                        if (dir < 0) {
+                            dir = 3;
+                        }
+                        dir = dir % 4;
+                    }
+                }
+                hilbert(order, "A", 0);
+                ctx.stroke();
+            }
+
+            window.onload = drawHilbertInstant;
+            drawBtn.addEventListener("click", drawHilbert);
+            drawBtn1.addEventListener("click", drawHilbertInstant);
+        </script>
+    </body>
+</html>
