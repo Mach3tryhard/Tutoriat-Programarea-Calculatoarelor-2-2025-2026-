@@ -51,11 +51,11 @@
 ## Examen
 
 ### Cerinta
- - [**Cerinta Examen 2025**]()
- - [**Cerinta Examen 2024**]()
- - [**Cerinta Examen 2023**]()
+ - [**Cerinta Examen 2025**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen2024.pdf)
+ - [**Cerinta Examen 2024**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen2024.pdf)
+ - [**Cerinta Examen 2023**](https://github.com/Mach3tryhard/Tutoriat-Programarea-Calculatoarelor-2-2025-2026-/tree/main/Examen2023.pdf)
 
 ### Rezolvari
- - [] [**Rezolvare Examen 2025**]()
- - [] [**Rezolvare Examen 2024**]()
- - [] [**Rezolvare Examen 2023**]()
+ - [] [**Rezolvare Examen 2025 (TO DO)**]()
+ - [] [**Rezolvare Examen 2024 (TO DO)**]()
+ - [] [**Rezolvare Examen 2023 (TO DO)**]()
